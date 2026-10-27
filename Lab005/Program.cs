@@ -21,3 +21,59 @@ while (number <= 10)
 }
 
 Console.WriteLine($"Сумма: {sum}");
+
+Console.WriteLine();
+Console.WriteLine("Бесконечный цикл");
+
+int i = 1;
+while (i <= 5)
+{
+    Console.WriteLine($"Значение i: {i++}");
+}
+
+Console.WriteLine();
+Console.WriteLine("Валидация ввода через while");
+bool isValid = false;
+int enteredAge = 0;
+
+while (!isValid)
+{
+    Console.WriteLine("Введите ваш возраст (целое число): ");
+    string input = Console.ReadLine();
+    isValid = int.TryParse(input, out enteredAge);
+
+    if (!isValid)
+    {
+        Console.WriteLine("Это не похоже на целое число. Попробуйте ещё раз.");
+    }
+}
+Console.WriteLine($"Принято! Ваш возраст: {enteredAge}");
+
+Console.WriteLine();
+Console.WriteLine("Меню (без выхода, один проход)");
+
+string menuChoice;
+do
+{
+    Console.WriteLine("1 - Показать дату");
+    Console.WriteLine("2 - Показать приветствовать");
+    Console.WriteLine("0 - Выход");
+    Console.Write("Выберите пункт: ");
+    menuChoice = Console.ReadLine();
+
+    switch (menuChoice)
+    {
+        case "1":
+            Console.WriteLine($"Сегодня : {DateTime.Now:dd.MM.yyyy}");
+            break;
+        case "2":
+            Console.WriteLine("Здравствуйте! Рады видеть вас снова.");
+            break;
+        case "0":
+            Console.WriteLine("До свидания!");
+            break;
+        default:
+            Console.WriteLine("Такого пункта нет, попробуйте снова.");
+            break;
+    }
+} while (menuChoice != "0");
